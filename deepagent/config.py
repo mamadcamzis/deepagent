@@ -58,10 +58,10 @@ class DeepAgentConfig:
     def from_env(cls, **overrides) -> "DeepAgentConfig":
         """Build a config from environment variables, applying *overrides*."""
         return cls(
-            model=os.getenv("DEEPAGENT_MODEL", cls.model),
+            model=os.getenv("DEEPAGENT_MODEL", "gpt-4o-mini"),
             api_key=os.getenv("OPENAI_API_KEY"),
-            max_iterations=int(os.getenv("DEEPAGENT_MAX_ITERATIONS", cls.max_iterations)),
-            temperature=float(os.getenv("DEEPAGENT_TEMPERATURE", cls.temperature)),
+            max_iterations=int(os.getenv("DEEPAGENT_MAX_ITERATIONS", "10")),
+            temperature=float(os.getenv("DEEPAGENT_TEMPERATURE", "0.0")),
             verbose=os.getenv("DEEPAGENT_VERBOSE", "").lower() in {"1", "true", "yes"},
             **overrides,
         )
